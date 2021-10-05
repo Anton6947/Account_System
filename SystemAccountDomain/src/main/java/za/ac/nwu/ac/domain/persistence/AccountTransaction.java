@@ -10,7 +10,7 @@ import java.util.Objects;
 
 //,schema = "VITRSA_SANDBOX"
 @Entity
-@Table(name = "ACCOUNT_TRANSACTIONS")
+@Table(name = "ACCOUNT_TRANSACTION", schema = "hr")
 public class AccountTransaction implements Serializable {
 
     private static final long serialVersionUID = -9042959122325444315L;
@@ -25,17 +25,17 @@ public class AccountTransaction implements Serializable {
     public AccountTransaction() {
     }
 
-    public AccountTransaction(Long transactionId, AccountType accountType, Long memberId, Long amount, LocalDate trasactionDate) {
+    public AccountTransaction(Long transactionId, AccountType accountType, Long memberId, Long amount, LocalDate transactionDate) {
         this.transactionId = transactionId;
         this.accountType = accountType;
         this.memberId = memberId;
         this.amount = amount;
-        this.transactionDate = trasactionDate;
+        this.transactionDate = transactionDate;
     }
 
     @Id
-    @SequenceGenerator(name = "VIT_RSA_GENERIC_SEQ", sequenceName = "VITRSA_SANDBOX.VIT_RSA_GENERIC_SEQ", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "VIT_RSA_GENERIC_SEQ")
+    @SequenceGenerator(name = "GENERIC_SEQ", sequenceName = "hr.GENERIC_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GENERIC_SEQ")
     @Column(name = "TRANSACTION_ID")
     public Long getTransactionId() {
         return transactionId;

@@ -15,7 +15,7 @@ public class FetchAccountTypeFlowImpl implements FetchAccountTypeFlow {
 
     private final AccountTypeTranslator accountTypeTranslator;
 
-
+    @Autowired
     public FetchAccountTypeFlowImpl(AccountTypeTranslator accountTypeTranslator){
         this.accountTypeTranslator = accountTypeTranslator;
     }
@@ -24,6 +24,16 @@ public class FetchAccountTypeFlowImpl implements FetchAccountTypeFlow {
     public List<AccountTypeDto>getAllAccountTypes(){
         return accountTypeTranslator.getAllAccountTypes();
     }
+
+    @Override
+    public AccountTypeDto getAccountTypeByMnemonic(String mnemonic){
+        return accountTypeTranslator.getAccountTypeByMnemonic(mnemonic);
+    }
+
+    public boolean methodToTest(){
+        return true;
+    }
+
 
 }
 

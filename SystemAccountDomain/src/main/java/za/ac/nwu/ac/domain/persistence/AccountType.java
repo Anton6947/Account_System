@@ -8,7 +8,7 @@ import java.util.Set;
 
 //, schema = "VITRSA_SANDBOX"
 @Entity
-@Table(name = "ACCOUNT_TYPE")
+@Table(name = "ACCOUNT_TYPE", schema = "hr")
 public class AccountType implements Serializable{
 
 
@@ -38,8 +38,8 @@ public class AccountType implements Serializable{
     }
 
     @Id
-    @SequenceGenerator(name = "VIT_RSA_GENERIC_SEQ", sequenceName = "VITRSA_SANDBOX.VIT_RSA_GENERIC_SEQ", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "VIT_RSA_GENERIC_SEQ")
+    @SequenceGenerator(name = "GENERIC_SEQ", sequenceName = "hr.GENERIC_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GENERIC_SEQ")
     @Column(name = "ACCOUNT_TYPE_ID")
     public Long getAccountTypeId() {
         return accountTypeId;
