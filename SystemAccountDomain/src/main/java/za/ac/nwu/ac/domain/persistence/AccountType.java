@@ -76,14 +76,14 @@ public class AccountType implements Serializable{
         this.creationDate = creationDate;
     }
 
-    @OneToMany(targetEntity = AccountTransaction.class, fetch = FetchType.LAZY, mappedBy = "accountType", orphanRemoval = true, cascade = CascadeType.PERSIST)
-    public Set<AccountTransaction> getAccountTransactions(){
-        return accountTransactions;
-    }
+//    @OneToMany(targetEntity = AccountTransaction.class, fetch = FetchType.LAZY, mappedBy = "accountType")
+//    public Set<AccountTransaction> getAccountTransactions(){
+//        return accountTransactions;
+//    }
 
-    public void setAccountTransactions(Set<AccountTransaction> accountTransactions) {
-        this.accountTransactions = accountTransactions;
-    }
+//    public void setAccountTransactions(Set<AccountTransaction> accountTransactions) {
+//        this.accountTransactions = accountTransactions;
+//    }
 
     @Override
     public boolean equals(Object o) {

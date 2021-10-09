@@ -13,6 +13,7 @@ import java.util.Objects;
             description = "A DTO that represents the AccountType"
 )
 
+
 public class AccountTypeDto implements Serializable {
 
     private static final long serialVersionUID = 6869150620524533488L;

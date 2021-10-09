@@ -45,14 +45,14 @@ public class CreateAccountTypeFlowImplTest {
 //        assertNotNull(result);
 //        verify(translator,times(2)).create(any(AccountTypeDto.class));
 //        verify(translator,times(1)).create(eq(accountTypeDto2));
-
-        doThrow(new RuntimeException()).when(translator).someMethod();
-        try {
-            flow.create(new AccountTypeDto());
-            fail("Should throw an exception");
-            }catch (Exception e){
-        }
-        verify(translator,times(1)).someMethod();
-        verify(translator,never()).create(any(AccountTypeDto.class));
+//
+//        doThrow(new RuntimeException()).when(translator).someMethod();
+//        try {
+//            flow.create(new AccountTypeDto());
+//            fail("Should throw an exception");
+//            }catch (Exception e){
+//        }
+//        verify(translator,times(1)).someMethod();
+//        verify(translator,never()).create(any(AccountTypeDto.class));
     }
 }

@@ -24,11 +24,14 @@ public class AccountTypeController {
        private final FetchAccountTypeFlow fetchAccountTypeFlow;
        private final CreateAccountTypeFlow createAccountTypeFlow;
 
+
+
        @Autowired
        public AccountTypeController(FetchAccountTypeFlow fetchAccountTypeFlow,
                                    @Qualifier("createAccountTypeFlowName") CreateAccountTypeFlow createAccountTypeFlow){
               this.createAccountTypeFlow = createAccountTypeFlow;
               this.fetchAccountTypeFlow = fetchAccountTypeFlow;
+
        }
 
        @GetMapping("/all")
@@ -78,4 +81,61 @@ public class AccountTypeController {
               GeneralResponse<AccountTypeDto> response = new GeneralResponse<>( true,accountTypes);
               return new ResponseEntity<>(response, HttpStatus.OK);
        }
+
+//       @DeleteMapping("{mnemonic}")
+//       @ApiOperation(value = "Delete the specified AccountType .", notes = "Deletes the AccountType corresponding to the given mnemonic.")
+//       @ApiResponses(value = {
+//               @ApiResponse(code = 200, message = "AccountType deleted", response = GeneralResponse.class),
+//               @ApiResponse(code = 400, message = "Bad Request", response =GeneralResponse.class),
+//               @ApiResponse(code = 404, message = "Resource not found", response =GeneralResponse.class),
+//               @ApiResponse(code = 500, message = "Internal Server Error", response= GeneralResponse.class),
+//       })
+//       public ResponseEntity<GeneralResponse<AccountTypeDto>> deleteAccountType(
+//               @ApiParam(value = "The mnemonic that uniquely identifies the AccountType",
+//                       example = "MILES",
+//                       name = "mnemonic",
+//                       required = true)
+//               @PathVariable("mnemonic") final String mnemonic){
+//
+//              AccountTypeDto accountTypes = modifyAccountTypeFlow.deleteAccountType(mnemonic);
+//
+//              GeneralResponse<AccountTypeDto> response = new GeneralResponse<>( true,accountTypes);
+//
+//              return new ResponseEntity<>(response, HttpStatus.OK);
+//       }
+//
+//       @PutMapping("{mnemonic}")
+//       @ApiOperation(value = "Updates the specified AccountType .", notes = "Updates the AccountType corresponding to the given mnemonic.")
+//       @ApiResponses(value = {
+//               @ApiResponse(code = 200, message = "AccountType Updated", response = GeneralResponse.class),
+//               @ApiResponse(code = 400, message = "Bad Request", response =GeneralResponse.class),
+//               @ApiResponse(code = 404, message = "Resource not found", response =GeneralResponse.class),
+//               @ApiResponse(code = 500, message = "Internal Server Error", response= GeneralResponse.class),
+//       })
+//       public ResponseEntity<GeneralResponse<AccountTypeDto>> updateAccountType(
+//               @ApiParam(value = "The mnemonic that uniquely identifies the AccountType",
+//                       example = "MILES",
+//                       name = "mnemonic",
+//                       required = true)
+//               @PathVariable("mnemonic") final String mnemonic,
+//
+//              @ApiParam(value = "The new AccountTypeName that the specified AccountType should be updated with",
+//                      name = "newAccountTypeName",
+//                      required = true)
+//              @RequestParam("newAccountTypeName") final String newAccountTypeName,
+//
+//               @ApiParam(value = "The optional new date with which to update the CreationDate is in ISO date format (yyyy-MM-dd)",
+//                       name = "newCreationDate")
+//               @RequestParam(value = "newCreationDate" , required = false)
+//               @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+//                            LocalDate newCreationDate)
+//       {
+//              AccountTypeDto accountTypes = modifyAccountTypeFlow.updateAccountType(mnemonic,newAccountTypeName,newCreationDate);
+//
+//              GeneralResponse<AccountTypeDto> response = new GeneralResponse<>( true,accountTypes);
+//
+//              return new ResponseEntity<>(response, HttpStatus.OK);
+//       }
+
+
 }

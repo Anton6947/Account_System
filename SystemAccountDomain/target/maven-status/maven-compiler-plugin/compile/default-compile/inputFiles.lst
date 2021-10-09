@@ -1,4 +1,6 @@
 C:\Users\abuit\Desktop\Project 1\SystemAccount\SystemAccountDomain\src\main\java\za\ac\nwu\ac\domain\dto\AccountTypeDto.java
 C:\Users\abuit\Desktop\Project 1\SystemAccount\SystemAccountDomain\src\main\java\za\ac\nwu\ac\domain\persistence\AccountType.java
+C:\Users\abuit\Desktop\Project 1\SystemAccount\SystemAccountDomain\src\main\java\za\ac\nwu\ac\domain\dto\AccountBalanceDto.java
+C:\Users\abuit\Desktop\Project 1\SystemAccount\SystemAccountDomain\src\main\java\za\ac\nwu\ac\domain\dto\AccountTransactionDto.java
 C:\Users\abuit\Desktop\Project 1\SystemAccount\SystemAccountDomain\src\main\java\za\ac\nwu\ac\domain\persistence\AccountTransaction.java
 C:\Users\abuit\Desktop\Project 1\SystemAccount\SystemAccountDomain\src\main\java\za\ac\nwu\ac\domain\service\GeneralResponse.java
