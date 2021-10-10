@@ -78,7 +78,7 @@ public class AccountTransactionDto implements Serializable {
     @ApiModelProperty(position = 3,
             value =  "AccountTransaction Transaction Date",
             name = "TransactionDate",
-            notes = "This is the date on which the Transaction happend",
+            notes = "This is the date on which the Transaction happened",
             dataType = "java.lang.String",
             example = "2020-01-01",
             allowEmptyValue = true)

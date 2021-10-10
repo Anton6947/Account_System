@@ -62,5 +62,9 @@ public class AccountTransactionTranslatorImpl implements AccountTransactionTrans
             throw new RuntimeException("Unable to read from the DB",e);
         }
     }
+    @Override
+    public void someMethod() {
+
+    }
 
 }

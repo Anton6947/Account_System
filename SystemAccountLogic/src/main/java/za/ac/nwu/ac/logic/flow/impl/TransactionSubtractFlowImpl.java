@@ -1,5 +1,7 @@
 package za.ac.nwu.ac.logic.flow.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import za.ac.nwu.ac.domain.dto.AccountTransactionDto;
 import za.ac.nwu.ac.logic.flow.TransactionSubtractFlow;
@@ -13,6 +15,8 @@ import java.time.LocalDate;
 @Component
 public class TransactionSubtractFlowImpl implements TransactionSubtractFlow {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(TransactionSubtractFlow.class);
+
     private final AccountTransactionTranslator accountTransactionTranslator;
 
     public TransactionSubtractFlowImpl(AccountTransactionTranslator accountTransactionTranslator){
@@ -21,6 +25,9 @@ public class TransactionSubtractFlowImpl implements TransactionSubtractFlow {
 
     @Override
     public AccountTransactionDto subtractMiles(AccountTransactionDto accountTransactionSubtractMiles) {
+
+        LOGGER.info("The input object was {}",accountTransactionSubtractMiles);
+
         if (null == accountTransactionSubtractMiles.getTransactionDate()) {
             accountTransactionSubtractMiles.setTransactionDate(LocalDate.now());
         }
@@ -32,6 +39,12 @@ public class TransactionSubtractFlowImpl implements TransactionSubtractFlow {
             throw new RuntimeException(e);
         }
 
+
+
         return accountTransactionTranslator.create(accountTransactionSubtractMiles);
+
+    }
+    public boolean methodToTest(){
+        return true;
     }
 }

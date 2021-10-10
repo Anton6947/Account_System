@@ -14,4 +14,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @PropertySource(value = "classpath:application-test-db.properties")
 
 public class RepositoryTestConfig {
+
+
 }

@@ -28,6 +28,8 @@ public class CreateAccountTypeFlowImpl implements CreateAccountTypeFlow {
     @Override
     public AccountTypeDto create(AccountTypeDto accountType){
 
+        LOGGER.info("The input object was {}",accountType);
+
 
         if(null == accountType.getCreationDate()){
             accountType.setCreationDate(LocalDate.now());

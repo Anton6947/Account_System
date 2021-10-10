@@ -28,13 +28,15 @@ public class CreateAccountTypeFlowImpl implements CreateAccountTypeFlow {
     @Override
     public AccountTypeDto create(AccountTypeDto accountType){
 
+<span class="fc" id="L31">        LOGGER.info(&quot;The input object was {}&quot;,accountType);</span>
 
-<span class="nc bnc" id="L32" title="All 2 branches missed.">        if(null == accountType.getCreationDate()){</span>
-<span class="nc" id="L33">            accountType.setCreationDate(LocalDate.now());</span>
+
+<span class="pc bpc" id="L34" title="1 of 2 branches missed.">        if(null == accountType.getCreationDate()){</span>
+<span class="fc" id="L35">            accountType.setCreationDate(LocalDate.now());</span>
         }
 
-<span class="nc" id="L36">        accountTypeTranslator.someMethod();</span>
-<span class="nc" id="L37">        return accountTypeTranslator.create(accountType);</span>
+<span class="nc" id="L38">        accountTypeTranslator.someMethod();</span>
+<span class="nc" id="L39">        return accountTypeTranslator.create(accountType);</span>
     }
 
 }

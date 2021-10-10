@@ -22,14 +22,11 @@ public class TransactionViewFlowImpl implements TransactionViewFlow {
 <span class="nc" id="L22">        this.accountTransactionTranslator = accountTransactionTranslator;</span>
 <span class="nc" id="L23">    }</span>
 
-//    @Override
-//    public List&lt;AccountTransactionDto&gt;getAccountTransactions(){
-//        return AccountTransactionTranslator.getAccountTransaction();
-//    }
+
 
     @Override
     public AccountBalanceDto getBalanceByMemberId(Long memberId){
-<span class="nc" id="L32">        return accountTransactionTranslator.getBalanceByMemberId(memberId);</span>
+<span class="nc" id="L29">        return accountTransactionTranslator.getBalanceByMemberId(memberId);</span>
     }
 
 

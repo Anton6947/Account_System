@@ -42,12 +42,7 @@ public class AccountTypeRepositoryTest {
 //        assertNotNull(miles);
 //        assertEquals("MILES", miles.getMnemonic());
 //    }
-//
-//    @Test
-//    public void getAccountTypeByMnemonicPlay() {
-//        AccountType miles = accountTypeRepository.getAccountTypeByMnemonic("MILESSS");
-//        assertNotNull(miles);;
-//        assertEquals("PLAY", miles.getMnemonic());
-//    }
+
+
 
 }

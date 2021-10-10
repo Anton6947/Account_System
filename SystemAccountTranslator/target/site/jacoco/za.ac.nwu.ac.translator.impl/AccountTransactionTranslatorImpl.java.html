@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AccountTransactionTranslatorImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SystemAccountTranslator</a> &gt; <a href="index.source.html" class="el_package">za.ac.nwu.ac.translator.impl</a> &gt; <span class="el_source">AccountTransactionTranslatorImpl.java</span></div><h1>AccountTransactionTranslatorImpl.java</h1><pre class="source lang-java linenums">package za.ac.nwu.ac.translator.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import za.ac.nwu.ac.domain.dto.AccountBalanceDto;
+import za.ac.nwu.ac.domain.dto.AccountTransactionDto;
+import za.ac.nwu.ac.domain.dto.AccountTypeDto;
+import za.ac.nwu.ac.domain.persistence.AccountTransaction;
+import za.ac.nwu.ac.domain.persistence.AccountType;
+import za.ac.nwu.ac.persistence.AccountTransactionRepository;
+import za.ac.nwu.ac.persistence.AccountTypeRepository;
+import za.ac.nwu.ac.translator.AccountTransactionTranslator;
+
+import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
+
+@Transactional
+@Component
+public class AccountTransactionTranslatorImpl implements AccountTransactionTranslator {
+
+    private final AccountTransactionRepository accountTransactionRepository;
+
+    @Autowired
+<span class="nc" id="L25">    public AccountTransactionTranslatorImpl(AccountTransactionRepository accountTransactionRepository){</span>
+<span class="nc" id="L26">        this.accountTransactionRepository = accountTransactionRepository;</span>
+<span class="nc" id="L27">    }</span>
+
+
+    @Override
+    public List&lt;AccountTransactionDto&gt; getAccountTransactions(Long memberId) {
+<span class="nc" id="L32">        List&lt;AccountTransactionDto&gt; accountTransactionDtos =new ArrayList&lt;&gt;();</span>
+        try {
+<span class="nc bnc" id="L34" title="All 2 branches missed.">            for(AccountTransaction accountTransaction : accountTransactionRepository.findAll()){</span>
+<span class="nc" id="L35">                accountTransactionDtos.add(new AccountTransactionDto(accountTransaction));</span>
+<span class="nc" id="L36">            }</span>
+
+<span class="nc" id="L38">        } catch (Exception e) {</span>
+<span class="nc" id="L39">            throw new RuntimeException(&quot;Unable read from DB&quot;, e);</span>
+<span class="nc" id="L40">        }</span>
+<span class="nc" id="L41">        return accountTransactionDtos;</span>
+    }
+
+
+
+    @Override
+    public AccountTransactionDto create(AccountTransactionDto accountTransactionDto) {
+        try {
+<span class="nc" id="L49">            AccountTransaction accountTransaction = accountTransactionRepository.save(accountTransactionDto.getAccountTransaction());</span>
+<span class="nc" id="L50">            return new AccountTransactionDto(accountTransaction);</span>
+<span class="nc" id="L51">        } catch (Exception e) {</span>
+<span class="nc" id="L52">            throw new RuntimeException(&quot;Unable to save to the DB&quot;, e);</span>
+        }
+    }
+
+
+    @Override
+    public AccountBalanceDto getBalanceByMemberId(Long memberId){
+        try{
+<span class="nc" id="L60">            return accountTransactionRepository.getBalanceByMemberId(memberId);</span>
+<span class="nc" id="L61">        }catch (Exception e){</span>
+<span class="nc" id="L62">            throw new RuntimeException(&quot;Unable to read from the DB&quot;,e);</span>
+        }
+    }
+    @Override
+    public void someMethod() {
+
+<span class="nc" id="L68">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

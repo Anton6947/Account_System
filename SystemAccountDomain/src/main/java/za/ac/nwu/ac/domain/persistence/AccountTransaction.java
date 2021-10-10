@@ -27,11 +27,13 @@ public class AccountTransaction implements Serializable {
 
     public AccountTransaction(Long transactionId, /*AccountType accountType,*/ Long memberId, Long amount, LocalDate transactionDate) {
         this.transactionId = transactionId;
-        /*this.accountType = accountType;*/
         this.memberId = memberId;
         this.amount = amount;
         this.transactionDate = transactionDate;
     }
+
+
+
 
     public AccountTransaction( Long memberId, Long amount, LocalDate transactionDate) {
 
@@ -78,7 +80,7 @@ public class AccountTransaction implements Serializable {
     public void setTransactionDate(LocalDate transactionDate) {
         this.transactionDate = transactionDate;
     }
-    
+
 
     @Override
     public boolean equals(Object o) {

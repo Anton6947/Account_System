@@ -13,4 +13,6 @@ public interface AccountTransactionTranslator {
 
     List<AccountTransactionDto> getAccountTransactions(Long memberId);
 
+    void someMethod();
+
 }

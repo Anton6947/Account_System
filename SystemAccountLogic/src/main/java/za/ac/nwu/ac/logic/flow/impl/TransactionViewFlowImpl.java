@@ -22,10 +22,7 @@ public class TransactionViewFlowImpl implements TransactionViewFlow {
         this.accountTransactionTranslator = accountTransactionTranslator;
     }
 
-//    @Override
-//    public List<AccountTransactionDto>getAccountTransactions(){
-//        return AccountTransactionTranslator.getAccountTransaction();
-//    }
+
 
     @Override
     public AccountBalanceDto getBalanceByMemberId(Long memberId){
