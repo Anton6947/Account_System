@@ -38,9 +38,9 @@ public class TransactionSubtractFlowImplTest {
     @Test
     public void subtractMiles() {
         when(translator.create(any(AccountTransactionDto.class))).then(returnsFirstArg());
-        AccountTransactionDto result = flow.subtractMiles((new AccountTransactionDto(1111L,2000L, LocalDate.now())));
+        AccountTransactionDto result = flow.subtractMiles((new AccountTransactionDto(1111L, 2000L, LocalDate.now())));
         assertNotNull(result);
-        verify(translator,atLeastOnce()).create(any(AccountTransactionDto.class));
+        verify(translator, atLeastOnce()).create(any(AccountTransactionDto.class));
 
 
     }

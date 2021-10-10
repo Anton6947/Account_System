@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 @ApiModel(value = "AccountTransaction",
-            description = "A DTO that represents the AccountTransaction" )
+        description = "A DTO that represents the AccountTransaction")
 
 public class AccountTransactionDto implements Serializable {
 
@@ -27,7 +27,7 @@ public class AccountTransactionDto implements Serializable {
     public AccountTransactionDto() {
     }
 
-    public AccountTransactionDto( Long memberId, Long amount, LocalDate transactionDate) {
+    public AccountTransactionDto(Long memberId, Long amount, LocalDate transactionDate) {
 
         this.memberId = memberId;
         this.amount = amount;
@@ -42,11 +42,12 @@ public class AccountTransactionDto implements Serializable {
     }
 
     @JsonIgnore
-    public AccountTransaction getAccountTransaction(){
-        return new AccountTransaction(this.getMemberId(),this.getAmount(),this.getTransactionDate()); }
+    public AccountTransaction getAccountTransaction() {
+        return new AccountTransaction(this.getMemberId(), this.getAmount(), this.getTransactionDate());
+    }
 
     @ApiModelProperty(position = 1,
-            value =  "AccountTransaction memberId",
+            value = "AccountTransaction memberId",
             name = "memberId",
             notes = "Uniquely identifies the memberId",
             dataType = "java.lang.Long",
@@ -61,7 +62,7 @@ public class AccountTransactionDto implements Serializable {
     }
 
     @ApiModelProperty(position = 2,
-            value =  "AccountTransaction amount",
+            value = "AccountTransaction amount",
             name = "amount",
             notes = "The amount of the AccountTransaction",
             dataType = "java.lang.Long",
@@ -76,7 +77,7 @@ public class AccountTransactionDto implements Serializable {
     }
 
     @ApiModelProperty(position = 3,
-            value =  "AccountTransaction Transaction Date",
+            value = "AccountTransaction Transaction Date",
             name = "TransactionDate",
             notes = "This is the date on which the Transaction happened",
             dataType = "java.lang.String",

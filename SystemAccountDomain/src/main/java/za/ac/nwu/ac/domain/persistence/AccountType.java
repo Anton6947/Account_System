@@ -6,10 +6,10 @@ import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Set;
 
-//, schema = "VITRSA_SANDBOX"
+
 @Entity
 @Table(name = "ACCOUNT_TYPE", schema = "hr")
-public class AccountType implements Serializable{
+public class AccountType implements Serializable {
 
 
     private static final long serialVersionUID = 10965971721370171L;
@@ -76,14 +76,6 @@ public class AccountType implements Serializable{
         this.creationDate = creationDate;
     }
 
-//    @OneToMany(targetEntity = AccountTransaction.class, fetch = FetchType.LAZY, mappedBy = "accountType")
-//    public Set<AccountTransaction> getAccountTransactions(){
-//        return accountTransactions;
-//    }
-
-//    public void setAccountTransactions(Set<AccountTransaction> accountTransactions) {
-//        this.accountTransactions = accountTransactions;
-//    }
 
     @Override
     public boolean equals(Object o) {

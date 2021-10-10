@@ -7,14 +7,14 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @ApiModel(value = "AccountBalance",
-        description = "A DTO that represents the AccountBalance" )
+        description = "A DTO that represents the AccountBalance")
 
 public class AccountBalanceDto implements Serializable {
 
     private Long memberId;
     private Long balance;
 
-    public AccountBalanceDto(){
+    public AccountBalanceDto() {
 
     }
 
@@ -24,9 +24,8 @@ public class AccountBalanceDto implements Serializable {
     }
 
 
-
     @ApiModelProperty(position = 1,
-            value =  "AccountBalance memberId",
+            value = "AccountBalance memberId",
             name = "memberId",
             notes = "Uniquely identifies the memberId",
             dataType = "java.lang.Long",
@@ -41,7 +40,7 @@ public class AccountBalanceDto implements Serializable {
     }
 
     @ApiModelProperty(position = 2,
-            value =  "AccountBalance balance",
+            value = "AccountBalance balance",
             name = "Balance",
             notes = "The Balance of the Account",
             dataType = "java.lang.Long",

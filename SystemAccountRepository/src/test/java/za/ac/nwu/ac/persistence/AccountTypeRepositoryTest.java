@@ -33,16 +33,8 @@ public class AccountTypeRepositoryTest {
 
     @Test
     public void test() {
-// Write a test here
+
     }
-
-//    @Test
-//    public void getAccountTypeByMnemonicMiles() {
-//        AccountType miles = accountTypeRepository.getAccountTypeByMnemonic("MILES");
-//        assertNotNull(miles);
-//        assertEquals("MILES", miles.getMnemonic());
-//    }
-
 
 
 }

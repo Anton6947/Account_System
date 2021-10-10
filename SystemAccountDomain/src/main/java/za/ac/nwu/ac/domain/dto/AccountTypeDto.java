@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 @ApiModel(value = "AccountType",
-            description = "A DTO that represents the AccountType"
+        description = "A DTO that represents the AccountType"
 )
 
 
@@ -31,19 +31,19 @@ public class AccountTypeDto implements Serializable {
         this.creationDate = creationDate;
     }
 
-    public AccountTypeDto(AccountType accountType){
+    public AccountTypeDto(AccountType accountType) {
         this.setMnemonic(accountType.getMnemonic());
         this.setAccountTypeName(accountType.getAccountTypeName());
         this.setCreationDate(accountType.getCreationDate());
     }
 
     @ApiModelProperty(position = 1,
-        value =  "AccountType Mnemonic",
-        name = "Mnemonic",
-        notes = "Uniquely identifies the account type",
-        dataType = "java.lang.String",
-        example = "MILES",
-        required = true)
+            value = "AccountType Mnemonic",
+            name = "Mnemonic",
+            notes = "Uniquely identifies the account type",
+            dataType = "java.lang.String",
+            example = "MILES",
+            required = true)
     public String getMnemonic() {
         return mnemonic;
     }
@@ -54,7 +54,7 @@ public class AccountTypeDto implements Serializable {
 
 
     @ApiModelProperty(position = 2,
-            value =  "AccountType Name",
+            value = "AccountType Name",
             name = "Name",
             notes = "The name of the AccountType",
             dataType = "java.lang.String",
@@ -69,7 +69,7 @@ public class AccountTypeDto implements Serializable {
     }
 
     @ApiModelProperty(position = 3,
-            value =  "AccountType Creation Date",
+            value = "AccountType Creation Date",
             name = "CreationDate",
             notes = "This is the date on which the Account was created",
             dataType = "java.lang.String",
@@ -92,8 +92,8 @@ public class AccountTypeDto implements Serializable {
     }
 
     @JsonIgnore
-    public AccountType getAccountType(){
-        return new AccountType(getMnemonic(),getAccountTypeName(),getCreationDate());
+    public AccountType getAccountType() {
+        return new AccountType(getMnemonic(), getAccountTypeName(), getCreationDate());
     }
 
     @Override

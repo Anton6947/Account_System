@@ -26,10 +26,10 @@ public class AccountTransactionRepositoryTest {
 
     @Before
     public void setUp() throws Exception {
-        accountTransactionRepository.save( new AccountTransaction(0L,1111L,2000L, LocalDate.now()));
-        accountTransactionRepository.save( new AccountTransaction(0L,1111L,2001L, LocalDate.now()));
-        accountTransactionRepository.save( new AccountTransaction(0L,1111L,-200L, LocalDate.now()));
-        accountTransactionRepository.save(  new AccountTransaction(0L,1111L,50L, LocalDate.now()));
+        accountTransactionRepository.save(new AccountTransaction(0L, 1111L, 2000L, LocalDate.now()));
+        accountTransactionRepository.save(new AccountTransaction(0L, 1111L, 2001L, LocalDate.now()));
+        accountTransactionRepository.save(new AccountTransaction(0L, 1111L, -200L, LocalDate.now()));
+        accountTransactionRepository.save(new AccountTransaction(0L, 1111L, 50L, LocalDate.now()));
     }
 
     @After
@@ -38,19 +38,15 @@ public class AccountTransactionRepositoryTest {
     }
 
     @Test
-    public void getBalanceByMemberId(){
+    public void getBalanceByMemberId() {
 
         AccountBalanceDto result = accountTransactionRepository.getBalanceByMemberId(1111L);
 
         assertNotNull(result);
-        assertTrue(result.getBalance()== 3851L);
-
+        assertTrue(result.getBalance() == 3851L);
 
 
     }
-
-
-
 
 
 }

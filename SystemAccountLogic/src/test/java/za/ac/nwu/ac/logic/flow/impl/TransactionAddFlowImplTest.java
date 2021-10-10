@@ -41,9 +41,9 @@ public class TransactionAddFlowImplTest {
     @Test
     public void addMiles() {
         when(translator.create(any(AccountTransactionDto.class))).then(returnsFirstArg());
-        AccountTransactionDto result = flow.addMiles((new AccountTransactionDto(1111L,2000L, LocalDate.now())));
+        AccountTransactionDto result = flow.addMiles((new AccountTransactionDto(1111L, 2000L, LocalDate.now())));
         assertNotNull(result);
-        verify(translator,atLeastOnce()).create(any(AccountTransactionDto.class));
+        verify(translator, atLeastOnce()).create(any(AccountTransactionDto.class));
 
     }
 }

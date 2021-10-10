@@ -12,16 +12,12 @@ import za.ac.nwu.ac.domain.dto.AccountTypeDto;
 public interface AccountTypeRepository extends JpaRepository<AccountType, Long> {
 
 
-
-
     @Query(value = "SELECT" +
-            "    at"+
-            "  FROM"+
-            "    AccountType at"+
+            "    at" +
+            "  FROM" +
+            "    AccountType at" +
             "  WHERE at.mnemonic = :mnemonic ")
     AccountType getAccountTypeByMnemonic(String mnemonic);
-
-
 
 
 }

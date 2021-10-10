@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AccountTransactionController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SystemAccountWebSpringBoot</a> &gt; <a href="index.source.html" class="el_package">za.ac.nwu.ac.web.sb.Controler</a> &gt; <span class="el_source">AccountTransactionController.java</span></div><h1>AccountTransactionController.java</h1><pre class="source lang-java linenums">package za.ac.nwu.ac.web.sb.Controler;
+
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import za.ac.nwu.ac.domain.dto.AccountBalanceDto;
+import za.ac.nwu.ac.domain.dto.AccountTransactionDto;
+import za.ac.nwu.ac.domain.dto.AccountTypeDto;
+import za.ac.nwu.ac.domain.service.GeneralResponse;
+import za.ac.nwu.ac.logic.flow.*;
+
+import javax.transaction.Transactional;
+import java.util.List;
+
+@RestController
+@RequestMapping(&quot;account-transaction&quot;)
+public class AccountTransactionController {
+
+    private final TransactionAddFlow transactionAddFlow;
+    private final TransactionSubtractFlow transactionSubtractFlow;
+    private final TransactionViewFlow transactionViewFlow;
+
+    @Autowired
+<span class="fc" id="L30">    public AccountTransactionController(TransactionAddFlow transactionAddFlow, TransactionSubtractFlow transactionSubtractFlow, TransactionViewFlow transactionViewFlow) {</span>
+<span class="fc" id="L31">        this.transactionAddFlow = transactionAddFlow;</span>
+<span class="fc" id="L32">        this.transactionSubtractFlow = transactionSubtractFlow;</span>
+<span class="fc" id="L33">        this.transactionViewFlow = transactionViewFlow;</span>
+
+<span class="fc" id="L35">    }</span>
+
+
+    @PostMapping(&quot;add-miles&quot;)
+    @ApiOperation(value = &quot;Creates a new AddMiles transaction&quot;, notes = &quot;Creates a new transaction in the DB&quot;)
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = &quot;The transaction was successful&quot;, response = GeneralResponse.class),
+            @ApiResponse(code = 400, message = &quot;Bad Request&quot;, response = GeneralResponse.class),
+            @ApiResponse(code = 500, message = &quot;Internal Server Error&quot;, response = GeneralResponse.class)})
+    @Transactional(rollbackOn = Throwable.class)
+
+    public ResponseEntity&lt;GeneralResponse&lt;AccountTransactionDto&gt;&gt; addMiles(
+            @ApiParam(value = &quot;Request body to create new add miles&quot;, required = true)
+            @RequestBody AccountTransactionDto accountTransaction,
+            @RequestHeader(name = &quot;throw_exception&quot;, required = false, defaultValue = &quot;false&quot;) Boolean throw_exception) {
+<span class="nc" id="L50">        AccountTransactionDto accountTransactionResponse = transactionAddFlow.addMiles(accountTransaction);</span>
+<span class="nc" id="L51">        GeneralResponse&lt;AccountTransactionDto&gt; response = new GeneralResponse&lt;&gt;(true, accountTransactionResponse);</span>
+
+
+<span class="nc bnc" id="L54" title="All 2 branches missed.">        if (throw_exception) {</span>
+<span class="nc" id="L55">            throw new RuntimeException(&quot;Exception called , Transaction rolled back&quot;);</span>
+        }
+
+<span class="nc" id="L58">        return new ResponseEntity&lt;&gt;(response, HttpStatus.CREATED);</span>
+    }
+
+
+    @PostMapping(&quot;subtract-miles&quot;)
+    @ApiOperation(value = &quot;Creates a new Subtract Transaction&quot;, notes = &quot;Creates a new transaction in the DB&quot;)
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = &quot;The transaction was successful&quot;, response = GeneralResponse.class),
+            @ApiResponse(code = 400, message = &quot;Bad Request&quot;, response = GeneralResponse.class),
+            @ApiResponse(code = 500, message = &quot;Internal Server Error&quot;, response = GeneralResponse.class)})
+    @Transactional(rollbackOn = Throwable.class)
+    public ResponseEntity&lt;GeneralResponse&lt;AccountTransactionDto&gt;&gt; subtractMiles(
+            @ApiParam(value = &quot;Request body to create new Subtraction&quot;, required = true)
+            @RequestBody AccountTransactionDto accountTransaction,
+            @RequestHeader(name = &quot;throw_exception&quot;, required = false, defaultValue = &quot;false&quot;) Boolean throw_exception) {
+<span class="nc" id="L73">        AccountTransactionDto accountTransactionResponse = transactionSubtractFlow.subtractMiles(accountTransaction);</span>
+<span class="nc" id="L74">        GeneralResponse&lt;AccountTransactionDto&gt; response = new GeneralResponse&lt;&gt;(true, accountTransactionResponse);</span>
+
+<span class="nc bnc" id="L76" title="All 2 branches missed.">        if (throw_exception) {</span>
+<span class="nc" id="L77">            throw new RuntimeException(&quot;Exception called , Transaction rolled back&quot;);</span>
+        }
+
+<span class="nc" id="L80">        return new ResponseEntity&lt;&gt;(response, HttpStatus.CREATED);</span>
+
+    }
+
+
+    @GetMapping(&quot;{memberId}&quot;)
+    @ApiOperation(value = &quot;Fetches the specified member transaction .&quot;, notes = &quot;Fetches the transaction corresponding to the given member.&quot;)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = &quot;Goal Found&quot;, response = GeneralResponse.class),
+            @ApiResponse(code = 400, message = &quot;Bad Request&quot;, response = GeneralResponse.class),
+            @ApiResponse(code = 404, message = &quot;Resource not found&quot;, response = GeneralResponse.class),
+            @ApiResponse(code = 500, message = &quot;Internal Server Error&quot;, response = GeneralResponse.class),
+    })
+    public ResponseEntity&lt;GeneralResponse&lt;AccountBalanceDto&gt;&gt; getAccountTransaction(
+            @ApiParam(value = &quot;The memberId that uniquely identifies each member&quot;,
+                    example = &quot;1111&quot;,
+                    name = &quot;memberId&quot;,
+                    required = true)
+            @PathVariable(&quot;memberId&quot;) final Long memberId) {
+
+<span class="nc" id="L100">        AccountBalanceDto accountTransaction = transactionViewFlow.getBalanceByMemberId(memberId);</span>
+<span class="nc" id="L101">        GeneralResponse&lt;AccountBalanceDto&gt; response = new GeneralResponse&lt;&gt;(true, accountTransaction);</span>
+<span class="nc" id="L102">        return new ResponseEntity&lt;&gt;(response, HttpStatus.OK);</span>
+    }
+
+
+
+}
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

@@ -1,8 +1,6 @@
 package za.ac.nwu.ac.domain.persistence;
 
 
-
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -17,7 +15,6 @@ public class AccountTransaction implements Serializable {
 
 
     private Long transactionId;
-    /*private AccountType accountType;*/
     private Long memberId;
     private Long amount;
     private LocalDate transactionDate;
@@ -25,7 +22,7 @@ public class AccountTransaction implements Serializable {
     public AccountTransaction() {
     }
 
-    public AccountTransaction(Long transactionId, /*AccountType accountType,*/ Long memberId, Long amount, LocalDate transactionDate) {
+    public AccountTransaction(Long transactionId, Long memberId, Long amount, LocalDate transactionDate) {
         this.transactionId = transactionId;
         this.memberId = memberId;
         this.amount = amount;
@@ -33,9 +30,7 @@ public class AccountTransaction implements Serializable {
     }
 
 
-
-
-    public AccountTransaction( Long memberId, Long amount, LocalDate transactionDate) {
+    public AccountTransaction(Long memberId, Long amount, LocalDate transactionDate) {
 
         this.memberId = memberId;
         this.amount = amount;
@@ -87,12 +82,12 @@ public class AccountTransaction implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AccountTransaction that = (AccountTransaction) o;
-        return Objects.equals(transactionId, that.transactionId) /*&& Objects.equals(accountType, that.accountType)*/ && Objects.equals(memberId, that.memberId) && Objects.equals(amount, that.amount) && Objects.equals(transactionDate, that.transactionDate);
+        return Objects.equals(transactionId, that.transactionId) && Objects.equals(memberId, that.memberId) && Objects.equals(amount, that.amount) && Objects.equals(transactionDate, that.transactionDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(transactionId, /*accountType,*/ memberId, amount, transactionDate);
+        return Objects.hash(transactionId, memberId, amount, transactionDate);
     }
 
 
@@ -100,7 +95,6 @@ public class AccountTransaction implements Serializable {
     public String toString() {
         return "AccountTransaction{" +
                 "transactionId=" + transactionId +
-                /*", accountType=" + accountType +*/
                 ", memberId=" + memberId +
                 ", amount=" + amount +
                 ", transactionDate=" + transactionDate +

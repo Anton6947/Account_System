@@ -13,9 +13,13 @@ public class GeneralResponse<T> implements Serializable {
         this.payload = payload;
     }
 
-    public  boolean isSuccessful() {return successful;}
+    public boolean isSuccessful() {
+        return successful;
+    }
 
-    public T getPayload() {return payload;}
+    public T getPayload() {
+        return payload;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -26,7 +30,9 @@ public class GeneralResponse<T> implements Serializable {
     }
 
     @Override
-    public int hashCode() {return Objects.hash(successful, payload);}
+    public int hashCode() {
+        return Objects.hash(successful, payload);
+    }
 
     @Override
     public String toString() {

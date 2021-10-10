@@ -13,15 +13,13 @@ import za.ac.nwu.ac.domain.persistence.AccountType;
 public interface AccountTransactionRepository extends JpaRepository<AccountTransaction, Long> {
 
     @Query(value = "SELECT new za.ac.nwu.ac.domain.dto.AccountBalanceDto( " +
-            "    at.memberId, "+
-            "    SUM(at.amount))"+
-            "  FROM "+
-            "    AccountTransaction at"+
-            "  WHERE at.memberId = :memberId "+
+            "    at.memberId, " +
+            "    SUM(at.amount))" +
+            "  FROM " +
+            "    AccountTransaction at" +
+            "  WHERE at.memberId = :memberId " +
             "  GROUP BY at.memberId ")
     AccountBalanceDto getBalanceByMemberId(Long memberId);
-
-
 
 
 }

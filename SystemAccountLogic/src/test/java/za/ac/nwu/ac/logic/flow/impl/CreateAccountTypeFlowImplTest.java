@@ -10,11 +10,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import za.ac.nwu.ac.domain.dto.AccountTypeDto;
 import za.ac.nwu.ac.translator.AccountTypeTranslator;
-
-import java.time.LocalDate;
-
 import static org.junit.Assert.*;
-import static org.mockito.AdditionalAnswers.returnsFirstArg;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -43,9 +39,9 @@ public class CreateAccountTypeFlowImplTest {
         try {
             flow.create(new AccountTypeDto());
             fail("Should throw an exception");
-            }catch (Exception e){
+        } catch (Exception e) {
         }
-        verify(translator,times(1)).someMethod();
-        verify(translator,never()).create(any(AccountTypeDto.class));
+        verify(translator, times(1)).someMethod();
+        verify(translator, never()).create(any(AccountTypeDto.class));
     }
 }
