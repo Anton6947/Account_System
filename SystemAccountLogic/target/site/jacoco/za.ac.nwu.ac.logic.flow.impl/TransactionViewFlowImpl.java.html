@@ -30,10 +30,7 @@ public class TransactionViewFlowImpl implements TransactionViewFlow {
     }
 
 
-//    @Override
-//    public AccountTransaction getTransactionForMemberId(Long memberId){
-//        return AccountTransactionTranslator.getBalanceByMemberId(memberId);
-//    }
+
 
 
 
